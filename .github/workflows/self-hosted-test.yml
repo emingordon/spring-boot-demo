@@ -1,16 +1,23 @@
-name: Self-Hosted Runner Test
+name: Spring Boot Build (Self-Hosted)
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  test-runner:
+  build:
     runs-on: self-hosted
 
     steps:
-      - name: Show runner info
-        run: |
-          echo "Hello from self-hosted runner!"
-          uname -a
-          date
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Maven
+        run: ./mvnw clean install
+

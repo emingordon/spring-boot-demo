@@ -11,3 +11,11 @@ public class DemoApplication {
 	}
 
 }
+
+@RestController
+class HelloController {
+    @GetMapping("/")
+    public String hello() {
+        return "Hello from Spring Boot!";
+    }
+}

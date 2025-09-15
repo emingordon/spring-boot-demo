@@ -1,0 +1,16 @@
+name: Self-Hosted Runner Test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+
+    steps:
+      - name: Show runner info
+        run: |
+          echo "Hello from self-hosted runner!"
+          uname -a
+          date
